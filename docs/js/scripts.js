@@ -1,50 +1,154 @@
-var i = 0;
-var score = 0;
-var firstClick = true;
+var i = 0,
+    score = 0,
+    firstClick = true,
+    quiz = $('.quiz'),
+    welcome = $('.welcome'),
+    footer = $('.footer'),
+    lang = $('html').attr('lang');
+
+var quizQuestions = [
+    {
+        "ru": {
+            question: "Тарч",
+            answers: {
+                "Польский меч": "0",
+                "Вид ядра": "0",
+                "Русский щит": "1"
+            },
+            description: "Описание с фактами первого вопроса"
+        },
+        "eng": {
+            question: "Tarch",
+            answers: {
+                "Polish sword": "0",
+                "Вид ядра": "0",
+                "Russian shield": "1"
+            },
+            description: "Facts of the first question"
+        }
+    },
+    {
+        "ru": {
+            question: "Второй предмет",
+            answers: {
+                "Польский меч": "0",
+                "Вид ядра": "0",
+                "Русский щит": "1"
+            },
+            description: "Описание с фактами первого вопроса"
+        },
+        "eng": {
+            question: "Second item",
+            answers: {
+                "wrong2": "0",
+                "again wrong2": "0",
+                "true2": "1"
+            },
+            description: "Facts of the second question"
+        }
+    },
+    {
+        "ru": {
+            question: "Третий предмет",
+            answers: {
+                "Польский меч": "0",
+                "Вид ядра": "0",
+                "Русский щит": "1"
+            },
+            description: "Описание с фактами первого вопроса"
+        },
+        "eng": {
+            question: "Third item",
+            answers: {
+                "wrong3": "0",
+                "again wrong3": "0",
+                "true3": "1"
+            },
+            description: "Facts of the third question"
+        }
+    }
+];
+var quizQuestionsLength = quizQuestions.length;
+
+var quizStrings = [
+    {
+        "ru": {
+            start: "Начать",
+            end: "Завершить квест",
+            score: "Ваш счет",
+            out: "из",
+            tryAgain: "Попробуйте еще раз",
+            reset: "В начало",
+            next: "Следующий вопрос",
+            lang: "English"
+        },
+        "eng": {
+            start: "Start",
+            end: "Finish",
+            score: "Your score is",
+            out: "out of",
+            tryAgain: "Try again",
+            reset: "To begin",
+            next: "Next question",
+            lang: "Русский"
+        }
+    }
+];
+
+function interfaceRender() {
+    welcome.append( "<button class='js-quiz'>" + quizStrings[0][lang].start + "</button>" );
+    footer.append( "<button class='reset'>" + quizStrings[0][lang].reset + "</button>" );
+    footer.append( "<button class='lang'>" + quizStrings[0][lang].lang + "</button>" );
+
+}
+interfaceRender();
+
 
 $(document).on('click', '.js-quiz', function () {
 
     var $this = $(this);
     $this.hide();
 
-    var quiz = $('.quiz');
-
     quiz.html('');
 
 
     function render() {
-
-        quiz.append("" +
+        quiz.append(
             "<div class='quiz-wrap'>" +
-            "<div class='question'>" + quizQuestions[i].question + "</div>" +
-            "</div>");
-
+                "<div class='question'>" + quizQuestions[i][lang].question + "</div>" +
+            "</div>"
+        );
         quiz.append(
             $( '<div />', { 'class': 'answers' } ).append( function() {
-                return $.map(quizQuestions[i].answers, function(value, key) {
+
+                return $.map(quizQuestions[i][lang].answers, function(value, key) {
                     return $( '<button class="quiz-answer" data-true="'+ value +'">'+ key +'</button>');
                 });
+
             })
         );
-
-        quiz.append("" +
+        quiz.append(
             "<div class='quiz-additional hide'>" +
-            "<div>" + quizQuestions[i].description + "</div>" +
-            "</div>");
+                "<div>" + quizQuestions[i][lang].description + "</div>" +
+            "</div>"
+        );
     }
 
     if ( i == quizQuestionsLength - 1 ) {
+
         render();
 
-        quiz.append("" +
+        quiz.append(
             "<div class='quiz-additional hide'>" +
-            "<button class='js-quiz'>Завершить квест</button>" +
-            "</div>");
+                "<button class='js-quiz'>" + quizStrings[0][lang].end + "</button>" +
+            "</div>"
+        );
 
+        firstClick = true;
         i++;
 
     } else if ( i == quizQuestionsLength ) {
-        quiz.append( "<div class='score'>Ваш счет " + score + " из 2</div>" );
+        quiz.append( "<div class='score'>" + quizStrings[0][lang].score + " " + score + " " + quizStrings[0][lang].out + " " + quizQuestionsLength +"</div>" );
         $('.js-quiz').show();
 
 
@@ -59,30 +163,26 @@ $(document).on('click', '.js-quiz', function () {
 
         render();
 
-        quiz.append("" +
+        quiz.append(
             "<div class='quiz-additional hide'>" +
-                "<button class='js-quiz'>Следующий вопрос</button>" +
-            "</div>");
+                "<button class='js-quiz'>" + quizStrings[0][lang].next + "</button>" +
+            "</div>"
+        );
 
 
         firstClick = true;
-
-        console.log(i, quizQuestionsLength );
-
-
         i++;
     }
-
-
 
 });
 
 
 $(document).on('click', '.quiz-answer', function () {
-    console.log($(this).attr('data-true'));
+
     $('.quiz-alert').remove();
+
     if ($(this).attr('data-true') != 0) {
-        console.log('true');
+
         $('.answers').addClass('hide');
         $('.quiz-additional').removeClass('hide');
 
@@ -91,48 +191,40 @@ $(document).on('click', '.quiz-answer', function () {
         }
 
     } else {
-        $('.quiz').append( "<div class='quiz-alert'>Поробуйте еще раз</div>" );
+        quiz.append( "<div class='quiz-alert'>" + quizStrings[0][lang].tryAgain + "</div>" );
         $(this).addClass('pressed');
     }
 
     firstClick = false;
 });
 
-function callAjaxContent(loadUrl,preload) {
-    var quiz = $('.quiz');
-    $.get(loadUrl, function(data) {
+$(document).on('click', '.reset', function () {
+    quiz.html('');
+    $('.js-quiz').show();
+    score = 0;
+    i = 0;
+});
+$(document).on('click', '.lang', function () {
 
-        quiz.html(data);
-
-    }).done(function() {
-        $(preload).css('display', 'none');
-    }).fail(function() {
-        $(target).html('Что-то пошло не так...');
-        $(preload).css('display', 'none');
-    }).always(function() {
-
-    });
-}
-
-
-var quizQuestions = [
-    {
-        question: "Тарч",
-        answers: {
-            "Польский меч": "0",
-            "Вид ядра": "0",
-            "Русский щит": "1"
-        },
-        description: "Описание с фактами первого вопроса"
-    },
-    {
-        question: "Test",
-        answers: {
-            "wrong": "0",
-            "wrong too": "0",
-            "true": "1"
-        },
-        description: "Описание с фактами второго вопроса"
+    if ($('html').attr('lang') == 'ru') {
+        lang = 'eng';
+    } else {
+        lang = 'ru';
     }
-];
-var quizQuestionsLength = quizQuestions.length;
+    $('html').attr('lang', lang);
+
+    quiz.html('');
+    welcome.html('');
+    footer.html('');
+
+
+
+    interfaceRender();
+
+
+    $('.js-quiz').show();
+
+    score = 0;
+    i = 0;
+
+});
