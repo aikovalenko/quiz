@@ -1,0 +1,76 @@
+/* colors */
+/* font */
+/* queries */
+[class^='icon-'],
+[class*=' icon-'],
+.slick-arrow,
+.select2-selection__arrow,
+.lg-prev,
+.lg-next
+{
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+
+    text-transform: none;
+
+    speak: none;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-left:before
+{
+    content: '\e900';
+}
+
+.icon-arrow-right:before
+{
+    content: '\e901';
+}
+
+.slick-next:before
+{
+    content: '\e901';
+}
+
+.slick-prev:before
+{
+    content: '\e900';
+}
+
+@font-face
+{
+    font-family: 'icomoon';
+    font-weight: 400;
+    font-style: normal;
+
+    src: url('../fonts/icomoon.eot');
+    src: url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'), url('../fonts/icomoon.woff') format('woff'), url('../fonts/icomoon.ttf') format('truetype'), url('../fonts/icomoon.svg#icomoon') format('svg');
+}
+
+body
+{
+    background-color: #ebd1ab;
+}
+
+button
+{
+    border: none; 
+    outline: none;
+    background: none;
+}
+
+.hide
+{
+    display: none;
+}
+
+.pressed
+{
+    color: grey;
+}
