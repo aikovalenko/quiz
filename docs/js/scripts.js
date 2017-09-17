@@ -18,7 +18,7 @@ $(document).on('click', '.quiz-finish', function () {
         $('.score').remove();
     }, 2000);
 
-    
+
     score = 0;
 
 });
