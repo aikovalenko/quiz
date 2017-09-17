@@ -1,35 +1,87 @@
-$(document).on('click', '.js-quiz', function () {
-    $(this).hide();
-
-    var loadUrl = $(this).attr('data-load'),
-        target = $(this).attr('data-target');
-
-    callAjaxContent(loadUrl,target);
-    firstClick = true;
-});
-
-$(document).on('click', '.quiz-finish', function () {
-
-    $('.quiz').append( "<div class='score'>Ваш счет " + score + " из 2</div>" );
-
-    setTimeout(function () {
-        $('.js-quiz').show();
-        $('.quiz-wrap').remove();
-        $('.score').remove();
-    }, 2000);
-
-
-    score = 0;
-
-});
-
+var i = 0;
 var score = 0;
 var firstClick = true;
+
+$(document).on('click', '.js-quiz', function () {
+
+    var $this = $(this);
+    $this.hide();
+
+    var quiz = $('.quiz');
+
+    quiz.html('');
+
+
+    function render() {
+
+        quiz.append("" +
+            "<div class='quiz-wrap'>" +
+            "<div class='question'>" + quizQuestions[i].question + "</div>" +
+            "</div>");
+
+        quiz.append(
+            $( '<div />', { 'class': 'answers' } ).append( function() {
+                return $.map(quizQuestions[i].answers, function(value, key) {
+                    return $( '<button class="quiz-answer" data-true="'+ value +'">'+ key +'</button>');
+                });
+            })
+        );
+
+        quiz.append("" +
+            "<div class='quiz-additional hide'>" +
+            "<div>" + quizQuestions[i].description + "</div>" +
+            "</div>");
+    }
+
+    if ( i == quizQuestionsLength - 1 ) {
+        render();
+
+        quiz.append("" +
+            "<div class='quiz-additional hide'>" +
+            "<button class='js-quiz'>Завершить квест</button>" +
+            "</div>");
+
+        i++;
+
+    } else if ( i == quizQuestionsLength ) {
+        quiz.append( "<div class='score'>Ваш счет " + score + " из 2</div>" );
+        $('.js-quiz').show();
+
+
+        setTimeout(function () {
+            $('.score').remove();
+        }, 5000);
+
+        score = 0;
+        i = 0;
+
+    } else {
+
+        render();
+
+        quiz.append("" +
+            "<div class='quiz-additional hide'>" +
+                "<button class='js-quiz'>Следующий вопрос</button>" +
+            "</div>");
+
+
+        firstClick = true;
+
+        console.log(i, quizQuestionsLength );
+
+
+        i++;
+    }
+
+
+
+});
+
 
 $(document).on('click', '.quiz-answer', function () {
     console.log($(this).attr('data-true'));
     $('.quiz-alert').remove();
-    if ($(this).attr('data-true') != undefined) {
+    if ($(this).attr('data-true') != 0) {
         console.log('true');
         $('.answers').addClass('hide');
         $('.quiz-additional').removeClass('hide');
@@ -45,7 +97,6 @@ $(document).on('click', '.quiz-answer', function () {
 
     firstClick = false;
 });
-
 
 function callAjaxContent(loadUrl,preload) {
     var quiz = $('.quiz');
@@ -67,12 +118,21 @@ function callAjaxContent(loadUrl,preload) {
 var quizQuestions = [
     {
         question: "Тарч",
-        answers: ["Польский меч","Вид ядра","Русский щит"],
-        right: 2
+        answers: {
+            "Польский меч": "0",
+            "Вид ядра": "0",
+            "Русский щит": "1"
+        },
+        description: "Описание с фактами первого вопроса"
     },
     {
         question: "Test",
-        answers: ["wrong","true","wrong"],
-        right: 1
+        answers: {
+            "wrong": "0",
+            "wrong too": "0",
+            "true": "1"
+        },
+        description: "Описание с фактами второго вопроса"
     }
 ];
+var quizQuestionsLength = quizQuestions.length;
