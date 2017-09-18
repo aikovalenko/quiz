@@ -100,7 +100,7 @@ var quizStrings = [
 function interfaceRender() {
     welcome.append(
         "<div>" +
-            "<img src='../images/intro.png' alt=''>" +
+            "<img src='images/intro.png' alt=''>" +
             "<div>" + quizStrings[0][lang].header + "</div>" +
             "<div>" + quizStrings[0][lang].about + "</div>" +
         "</div>" +
