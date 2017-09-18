@@ -45,33 +45,64 @@
 
 @font-face
 {
-    font-family: 'icomoon';
+    font-family: 'Officina';
     font-weight: 400;
     font-style: normal;
 
-    src: url('../fonts/icomoon.eot');
-    src: url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'), url('../fonts/icomoon.woff') format('woff'), url('../fonts/icomoon.ttf') format('truetype'), url('../fonts/icomoon.svg#icomoon') format('svg');
+    src: url('../fonts/OfficinaSerifMediumC.eot');
+    src: url('../fonts/OfficinaSerifMediumC.eot?#iefix') format('embedded-opentype'), url('../fonts/OfficinaSerifMediumC.woff') format('woff'), url('../fonts/OfficinaSerifMediumC.woff2') format('woff2'), url('../fonts/OfficinaSerifMediumC.ttf') format('truetype'), url('../fonts/OfficinaSerifMediumC.svg#Officina') format('svg');
+}
+
+@font-face
+{
+    font-family: 'Officina';
+    font-weight: 500;
+    font-style: normal;
+
+    src: url('../fonts/OfficinaSerifBoldSCC.eot');
+    src: url('../fonts/OfficinaSerifBoldSCC.eot?#iefix') format('embedded-opentype'), url('../fonts/OfficinaSerifBoldSCC.woff') format('woff'), url('../fonts/OfficinaSerifBoldSCC.woff2') format('woff2'), url('../fonts/OfficinaSerifBoldSCC.ttf') format('truetype'), url('../fonts/OfficinaSerifBoldSCC.svg#Officina') format('svg');
 }
 
 body
 {
-    font-family: 'Helvetica', Arial, serif;
-    font-size: 18px; 
+    font-family: 'Officina', 'Helvetica', Arial, serif;
+    font-size: 70px;
+    font-weight: 400;
+
+    overflow: hidden; 
 
     padding: 50px;
 
-    background-color: #ebd1ab;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+    background-color: #a86538;
+    background-image: url('../images/background.jpg');
+    -webkit-background-size: cover;
+            background-size: cover;
+
+    background-blend-mode: soft-light;
 }
 
 button
 {
-    margin-top: 5px; 
-    margin-right: 20px;
-    padding: 0;
+    padding: 0; 
 
     border: none;
     outline: none;
     background: none;
+}
+
+.reset
+{
+    letter-spacing: .2px;
+}
+
+.lang
+{
+    letter-spacing: .4px;
 }
 
 .hide
@@ -91,6 +122,34 @@ button
 
 .footer
 {
-    position: absolute;
-    top: 150px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 100%;
+    padding-right: 45px;
+    padding-bottom: 15px;
+    padding-left: 45px;
+
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+.footer button
+{
+    font-family: 'Officina', 'Helvetica', Arial, serif;
+    font-size: 40px;
+    font-weight: 400;
+
+    text-transform: uppercase; 
+
+    color: #ba9865;
 }

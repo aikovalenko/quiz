@@ -71,6 +71,8 @@ var quizQuestionsLength = quizQuestions.length;
 var quizStrings = [
     {
         "ru": {
+            header: "проверьте свои познания",
+            about: "в военном обмундировании XVII века",
             start: "Начать",
             end: "Завершить квест",
             score: "Ваш счет",
@@ -81,6 +83,8 @@ var quizStrings = [
             lang: "English"
         },
         "eng": {
+            header: "test your knowledge",
+            about: "in the military outfit of the XVII century",
             start: "Start",
             end: "Finish",
             score: "Your score is",
@@ -94,7 +98,14 @@ var quizStrings = [
 ];
 
 function interfaceRender() {
-    welcome.append( "<button class='js-quiz'>" + quizStrings[0][lang].start + "</button>" );
+    welcome.append(
+        "<div>" +
+            "<img src='../images/intro.png' alt=''>" +
+            "<div>" + quizStrings[0][lang].header + "</div>" +
+            "<div>" + quizStrings[0][lang].about + "</div>" +
+        "</div>" +
+        "<button class='js-quiz'>" + quizStrings[0][lang].start + "</button>"
+    );
     footer.append( "<button class='reset'>" + quizStrings[0][lang].reset + "</button>" );
     footer.append( "<button class='lang'>" + quizStrings[0][lang].lang + "</button>" );
 
@@ -105,7 +116,7 @@ interfaceRender();
 $(document).on('click', '.js-quiz', function () {
 
     var $this = $(this);
-    $this.hide();
+    welcome.hide();
 
     quiz.html('');
 
@@ -147,7 +158,7 @@ $(document).on('click', '.js-quiz', function () {
 
     } else if ( i == quizQuestionsLength ) {
         quiz.append( "<div class='score'>" + quizStrings[0][lang].score + " " + score + " " + quizStrings[0][lang].out + " " + quizQuestionsLength +"</div>" );
-        $('.js-quiz').show();
+        welcome.show();
 
 
         setTimeout(function () {
@@ -198,7 +209,7 @@ $(document).on('click', '.quiz-answer', function () {
 
 $(document).on('click', '.reset', function () {
     quiz.html('');
-    $('.js-quiz').show();
+    welcome.show();
     score = 0;
     i = 0;
 });
@@ -215,12 +226,9 @@ $(document).on('click', '.lang', function () {
     welcome.html('');
     footer.html('');
 
-
-
     interfaceRender();
 
-
-    $('.js-quiz').show();
+    welcome.show();
 
     score = 0;
     i = 0;
