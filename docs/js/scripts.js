@@ -21,7 +21,7 @@ var quizQuestions = [
             question: "Tarch",
             answers: {
                 "Polish sword": "0",
-                "Вид ядра": "0",
+                "Kind of kernel": "0",
                 "Russian shield": "1"
             },
             description: "Facts of the first question"
@@ -31,18 +31,16 @@ var quizQuestions = [
         "ru": {
             question: "Второй предмет",
             answers: {
-                "Польский меч": "0",
-                "Вид ядра": "0",
-                "Русский щит": "1"
+                "Неверно": "0",
+                "Верно": "1",
+                "Тоже неверно": "0"
             },
-            description: "Описание с фактами первого вопроса"
+            description: "Описание с фактами второго вопроса"
         },
         "eng": {
             question: "Second item",
             answers: {
-                "wrong2": "0",
-                "again wrong2": "0",
-                "true2": "1"
+
             },
             description: "Facts of the second question"
         }
@@ -51,18 +49,18 @@ var quizQuestions = [
         "ru": {
             question: "Третий предмет",
             answers: {
-                "Польский меч": "0",
-                "Вид ядра": "0",
-                "Русский щит": "1"
+                "Верно": "1",
+                "Неверно": "0",
+                "Тоже неверно": "0"
             },
-            description: "Описание с фактами первого вопроса"
+            description: "Описание с фактами третьего вопроса"
         },
         "eng": {
             question: "Third item",
             answers: {
-                "wrong3": "0",
-                "again wrong3": "0",
-                "true3": "1"
+                "Also false": "0",
+                "False": "0",
+                "True": "1"
             },
             description: "Facts of the third question"
         }
@@ -88,7 +86,7 @@ var quizStrings = [
             score: "Your score is",
             out: "out of",
             tryAgain: "Try again",
-            reset: "To begin",
+            reset: "To the beginning",
             next: "Next question",
             lang: "Русский"
         }
