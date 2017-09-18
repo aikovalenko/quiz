@@ -15,7 +15,7 @@ var quizQuestions = [
                 "Вид ядра": "0",
                 "Русский щит": "1"
             },
-            description: "Описание с фактами первого вопроса"
+            description: "<p>Представлял собой щит с железной рукавицей, надеваемой на левую руку.</p><p>К переднему концу рукавицы прикреплялся узкий клинок типа шпаги.</p><p>Тарч употреблялся лишь при обороне городов и крепостей</p>"
         },
         "eng": {
             question: "Tarch",
@@ -40,7 +40,9 @@ var quizQuestions = [
         "eng": {
             question: "Second item",
             answers: {
-
+                "Also false": "0",
+                "False": "0",
+                "True": "1"
             },
             description: "Facts of the second question"
         }
@@ -77,19 +79,19 @@ var quizStrings = [
             end: "Завершить квест",
             score: "Ваш счет",
             out: "из",
-            tryAgain: "Попробуйте еще раз",
+            tryAgain: "неверно, попробуйте ещё раз",
             reset: "В начало",
             next: "Следующий вопрос",
             lang: "English"
         },
         "eng": {
             header: "test your knowledge",
-            about: "in the military outfit of the XVII century",
+            about: "of the military outfit of the XVII century",
             start: "Start",
             end: "Finish",
             score: "Your score is",
             out: "out of",
-            tryAgain: "Try again",
+            tryAgain: "wrong, try again",
             reset: "To the beginning",
             next: "Next question",
             lang: "Русский"
@@ -99,16 +101,19 @@ var quizStrings = [
 
 function interfaceRender() {
     welcome.append(
-        "<div>" +
-            "<img src='images/intro.png' alt=''>" +
-            "<div>" + quizStrings[0][lang].header + "</div>" +
-            "<div>" + quizStrings[0][lang].about + "</div>" +
+        "<div class=''>" +
+            "<img class='animate animate-top animate-js pic' src='images/intro.png' alt=''>" +
+            "<div class='animate animate-inside animate-js header'>" + quizStrings[0][lang].header + "</div>" +
+            "<div class='animate animate-inside animate-js header--under'>" + quizStrings[0][lang].about + "</div>" +
         "</div>" +
-        "<button class='js-quiz'>" + quizStrings[0][lang].start + "</button>"
+        "<button class='animate animate-down animate-js js-quiz'>" + quizStrings[0][lang].start + "</button>"
     );
     footer.append( "<button class='reset'>" + quizStrings[0][lang].reset + "</button>" );
     footer.append( "<button class='lang'>" + quizStrings[0][lang].lang + "</button>" );
 
+    // setTimeout(function () {
+    //     $('.test').addClass('dasdasd');
+    // }, 1000);
 }
 interfaceRender();
 
@@ -116,73 +121,86 @@ interfaceRender();
 $(document).on('click', '.js-quiz', function () {
 
     var $this = $(this);
-    welcome.hide();
 
-    quiz.html('');
+    $('.animate-js').removeClass('animate');
+
+    setTimeout(function () {
+        welcome.hide();
+
+        quiz.html('');
 
 
-    function render() {
-        quiz.append(
-            "<div class='quiz-wrap'>" +
-                "<div class='question'>" + quizQuestions[i][lang].question + "</div>" +
-            "</div>"
-        );
-        quiz.append(
-            $( '<div />', { 'class': 'answers' } ).append( function() {
+        function render() {
+            quiz.append(
+                "<div class='quiz-wrap'>" +
+                    "<div class='question animate-top animate-js'>" + quizQuestions[i][lang].question + "</div>" +
+                "</div>"
+            );
+            quiz.append(
+                $( '<div />', { 'class': 'answers' } ).append( function() {
 
-                return $.map(quizQuestions[i][lang].answers, function(value, key) {
-                    return $( '<button class="quiz-answer" data-true="'+ value +'">'+ key +'</button>');
-                });
+                    return $.map(quizQuestions[i][lang].answers, function(value, key) {
+                        return $( '<button class="quiz-answer animate-inside animate-js" data-true="'+ value +'">'+ key +'</button>');
+                    });
 
-            })
-        );
-        quiz.append(
-            "<div class='quiz-additional hide'>" +
-                "<div>" + quizQuestions[i][lang].description + "</div>" +
-            "</div>"
-        );
-    }
-
-    if ( i == quizQuestionsLength - 1 ) {
-
-        render();
-
-        quiz.append(
-            "<div class='quiz-additional hide'>" +
-                "<button class='js-quiz'>" + quizStrings[0][lang].end + "</button>" +
-            "</div>"
-        );
-
-        firstClick = true;
-        i++;
-
-    } else if ( i == quizQuestionsLength ) {
-        quiz.append( "<div class='score'>" + quizStrings[0][lang].score + " " + score + " " + quizStrings[0][lang].out + " " + quizQuestionsLength +"</div>" );
-        welcome.show();
-
+                })
+            );
+            quiz.append(
+                "<div class='quiz-additional hide'>" +
+                    "<div class='description animate-inside animate-js'>" + quizQuestions[i][lang].description + "</div>" +
+                "</div>"
+            );
+        }
 
         setTimeout(function () {
-            $('.score').remove();
-        }, 5000);
+            $('.quiz-answer').addClass('animate');
+            $('.question').addClass('animate');
+        }, 100);
 
-        score = 0;
-        i = 0;
+        if ( i == quizQuestionsLength - 1 ) {
 
-    } else {
+            render();
 
-        render();
+            quiz.append(
+                "<div class='quiz-additional quiz-additional--next hide'>" +
+                    "<button class='js-quiz animate-down animate-js'>" + quizStrings[0][lang].end + "</button>" +
+                "</div>"
+            );
 
-        quiz.append(
-            "<div class='quiz-additional hide'>" +
-                "<button class='js-quiz'>" + quizStrings[0][lang].next + "</button>" +
-            "</div>"
-        );
+            firstClick = true;
+            i++;
+
+        } else if ( i == quizQuestionsLength ) {
+            quiz.append( "<div class='score'>" + quizStrings[0][lang].score + " " + score + " " + quizStrings[0][lang].out + " " + quizQuestionsLength +"</div>" );
+            welcome.show();
+            $('.animate-js').addClass('animate');
+
+            setTimeout(function () {
+                $('.score').remove();
+            }, 5000);
+
+            score = 0;
+            i = 0;
+
+        } else {
+
+            render();
+
+            quiz.append(
+                "<div class='quiz-additional quiz-additional--next hide'>" +
+                    "<button class='js-quiz animate-down animate-js'>" + quizStrings[0][lang].next + "</button>" +
+                "</div>"
+            );
+
+            // setTimeout(function () {
+            //     $('.animate-js').addClass('animate');
+            // }, 100);
 
 
-        firstClick = true;
-        i++;
-    }
-
+            firstClick = true;
+            i++;
+        }
+    }, 500);
 });
 
 
@@ -192,8 +210,19 @@ $(document).on('click', '.quiz-answer', function () {
 
     if ($(this).attr('data-true') != 0) {
 
-        $('.answers').addClass('hide');
-        $('.quiz-additional').removeClass('hide');
+
+        $('.quiz-answer').removeClass('animate');
+
+        setTimeout(function () {
+            $('.answers').addClass('hide');
+            $('.quiz-additional').removeClass('hide');
+
+
+        }, 400);
+        setTimeout(function () {
+            $('.description').addClass('animate');
+            $('.js-quiz').addClass('animate');
+        }, 600);
 
         if (firstClick) {
             score++;
@@ -204,31 +233,46 @@ $(document).on('click', '.quiz-answer', function () {
         $(this).addClass('pressed');
     }
 
+
     firstClick = false;
 });
 
 $(document).on('click', '.reset', function () {
-    quiz.html('');
-    welcome.show();
+
+    $('.animate-js').removeClass('animate');
+    setTimeout(function () {
+        quiz.html('');
+        welcome.show();
+        $('.animate-js').addClass('animate');
+    }, 400);
+
     score = 0;
     i = 0;
 });
 $(document).on('click', '.lang', function () {
 
-    if ($('html').attr('lang') == 'ru') {
-        lang = 'eng';
-    } else {
-        lang = 'ru';
-    }
-    $('html').attr('lang', lang);
+    $('.animate-js').removeClass('animate');
+    setTimeout(function () {
+        if ($('html').attr('lang') == 'ru') {
+            lang = 'eng';
+        } else {
+            lang = 'ru';
+        }
+        $('html').attr('lang', lang);
 
-    quiz.html('');
-    welcome.html('');
-    footer.html('');
+        quiz.html('');
+        welcome.html('');
+        footer.html('');
 
-    interfaceRender();
+        interfaceRender();
+        $('.animate-js').removeClass('animate');
 
-    welcome.show();
+        welcome.show();
+
+    }, 400);
+    setTimeout(function () {
+        $('.animate-js').addClass('animate');
+    }, 600);
 
     score = 0;
     i = 0;
