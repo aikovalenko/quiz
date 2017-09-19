@@ -244,7 +244,7 @@ $(document).on('click', '.quiz-answer', function () {
 $(document).on('click', '.reset', function () {
 
     $('.animate-js').removeClass('animate');
-    $('.background').addClass('background--intro');
+    $('.background').addClass('background--intro').removeClass("background--" + i + '');
     setTimeout(function () {
         quiz.html('');
         welcome.show();
@@ -273,7 +273,7 @@ $(document).on('click', '.lang', function () {
 
         interfaceRender();
         $('.animate-js').removeClass('animate');
-        $('.background').addClass('background--animate').removeClass("background--" + i + '');
+        $('.background').addClass('background--animate');
 
         welcome.show();
 
