@@ -102,7 +102,6 @@ var quizStrings = [
 function interfaceRender() {
     welcome.append(
         "<div class=''>" +
-            "<img class='animate animate-top animate-js pic' src='images/intro.png' alt=''>" +
             "<div class='animate animate-inside animate-js header'>" + quizStrings[0][lang].header + "</div>" +
             "<div class='animate animate-inside animate-js header--under'>" + quizStrings[0][lang].about + "</div>" +
         "</div>" +
@@ -123,6 +122,11 @@ $(document).on('click', '.js-quiz', function () {
     var $this = $(this);
 
     $('.animate-js').removeClass('animate');
+    $('.background').removeClass('background--animate');
+
+    setTimeout(function () {
+        $('.background').removeClass('background--intro').removeClass("background--" + i + '');
+    }, 300);
 
     setTimeout(function () {
         welcome.hide();
@@ -210,13 +214,13 @@ $(document).on('click', '.quiz-answer', function () {
 
     if ($(this).attr('data-true') != 0) {
 
-
+        $('.background').addClass("background--" + i + '');
         $('.quiz-answer').removeClass('animate');
 
         setTimeout(function () {
             $('.answers').addClass('hide');
             $('.quiz-additional').removeClass('hide');
-
+            $('.background').addClass("background--animate");
 
         }, 400);
         setTimeout(function () {
@@ -240,10 +244,12 @@ $(document).on('click', '.quiz-answer', function () {
 $(document).on('click', '.reset', function () {
 
     $('.animate-js').removeClass('animate');
+    $('.background').addClass('background--intro');
     setTimeout(function () {
         quiz.html('');
         welcome.show();
         $('.animate-js').addClass('animate');
+        $('.background').addClass('background--animate');
     }, 400);
 
     score = 0;
@@ -252,6 +258,7 @@ $(document).on('click', '.reset', function () {
 $(document).on('click', '.lang', function () {
 
     $('.animate-js').removeClass('animate');
+    $('.background').addClass('background--intro');
     setTimeout(function () {
         if ($('html').attr('lang') == 'ru') {
             lang = 'eng';
@@ -266,6 +273,7 @@ $(document).on('click', '.lang', function () {
 
         interfaceRender();
         $('.animate-js').removeClass('animate');
+        $('.background').addClass('background--animate');
 
         welcome.show();
 
