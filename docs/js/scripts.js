@@ -258,7 +258,7 @@ $(document).on('click', '.reset', function () {
 $(document).on('click', '.lang', function () {
 
     $('.animate-js').removeClass('animate');
-    $('.background').addClass('background--intro');
+    $('.background').addClass('background--intro').removeClass("background--" + i + '');
     setTimeout(function () {
         if ($('html').attr('lang') == 'ru') {
             lang = 'eng';
@@ -273,7 +273,7 @@ $(document).on('click', '.lang', function () {
 
         interfaceRender();
         $('.animate-js').removeClass('animate');
-        $('.background').addClass('background--animate');
+        $('.background').addClass('background--animate').removeClass("background--" + i + '');
 
         welcome.show();
 
