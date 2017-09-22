@@ -414,6 +414,18 @@ button
     margin-top: 240px;
 }
 
+.question--6 .description
+{
+    width: 700px;
+    margin-top: 140px;
+}
+
+.question--7 .description
+{
+    width: 380px;
+    margin-top: 220px;
+}
+
 .footer
 {
     position: fixed;
