@@ -49,8 +49,8 @@
     font-weight: 400;
     font-style: normal;
 
-    src: url('../fonts/OfficinaSerifMediumC.eot');
-    src: url('../fonts/OfficinaSerifMediumC.eot?#iefix') format('embedded-opentype'), url('../fonts/OfficinaSerifMediumC.woff') format('woff'), url('../fonts/OfficinaSerifMediumC.woff2') format('woff2'), url('../fonts/OfficinaSerifMediumC.ttf') format('truetype'), url('../fonts/OfficinaSerifMediumC.svg#Officina') format('svg');
+    src: url('../fonts/OfficinaSansMediumC.eot');
+    src: url('../fonts/OfficinaSansMediumC.eot?#iefix') format('embedded-opentype'), url('../fonts/OfficinaSansMediumC.woff') format('woff'), url('../fonts/OfficinaSansMediumC.woff2') format('woff2'), url('../fonts/OfficinaSansMediumC.ttf') format('truetype'), url('../fonts/OfficinaSansMediumC.svg#Officina') format('svg');
 }
 
 @font-face
@@ -59,8 +59,8 @@
     font-weight: 500;
     font-style: normal;
 
-    src: url('../fonts/OfficinaSerifBoldSCC.eot');
-    src: url('../fonts/OfficinaSerifBoldSCC.eot?#iefix') format('embedded-opentype'), url('../fonts/OfficinaSerifBoldSCC.woff') format('woff'), url('../fonts/OfficinaSerifBoldSCC.woff2') format('woff2'), url('../fonts/OfficinaSerifBoldSCC.ttf') format('truetype'), url('../fonts/OfficinaSerifBoldSCC.svg#Officina') format('svg');
+    src: url('../fonts/OfficinaSerifBoldOSC.eot');
+    src: url('../fonts/OfficinaSerifBoldOSC.eot?#iefix') format('embedded-opentype'), url('../fonts/OfficinaSerifBoldOSC.woff') format('woff'), url('../fonts/OfficinaSerifBoldOSC.woff2') format('woff2'), url('../fonts/OfficinaSerifBoldOSC.ttf') format('truetype'), url('../fonts/OfficinaSerifBoldOSC.svg#Officina') format('svg');
 }
 
 body
@@ -114,6 +114,30 @@ body
 {
     background-image: url('../images/background-1.jpg');
 }
+.background--2
+{
+    background-image: url('../images/background-2.jpg');
+}
+.background--3
+{
+    background-image: url('../images/background-3.jpg');
+}
+.background--4
+{
+    background-image: url('../images/background-4.jpg');
+}
+.background--5
+{
+    background-image: url('../images/background-5.jpg');
+}
+.background--6
+{
+    background-image: url('../images/background-6.jpg');
+}
+.background--7
+{
+    background-image: url('../images/background-7.jpg');
+}
 
 button
 {
@@ -147,7 +171,7 @@ button
     -webkit-transition: all .3s ease-in;
          -o-transition: all .3s ease-in;
             transition: all .3s ease-in; 
-    letter-spacing: 8px;
+    letter-spacing: 4px;
     text-transform: uppercase;
 }
 
@@ -168,14 +192,24 @@ button
 {
     font-size: 76px;
 
-    margin-top: 200px;
+    margin-top: 160px;
 
     color: #af2626;
 }
 
+.js-quiz
+{
+    position: relative;
+}
 .js-quiz:after
 {
-    display: block; 
+    position: absolute;
+    top: -150%; 
+
+    display: block;
+
+    width: 100%;
+    height: 400%;
 
     content: '';
 }
@@ -246,11 +280,25 @@ button
     font-size: 76px;
     font-weight: 500;
 
-    max-width: 33%;
+    position: relative;
+
+    width: 33%;
 
     -webkit-transition: all .3s ease-in;
          -o-transition: all .3s ease-in;
             transition: all .3s ease-in;
+}
+.quiz-answer:after
+{
+    position: absolute;
+    top: -75%; 
+
+    display: block;
+
+    width: 100%;
+    height: 250%;
+
+    content: '';
 }
 
 .quiz-alert
@@ -263,10 +311,50 @@ button
 
     width: 100%;
 
-    letter-spacing: 8px; 
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+    -webkit-animation: shake .82s cubic-bezier(.36, .07, .19, .97) both;
+            animation: shake .82s cubic-bezier(.36, .07, .19, .97) both;
+    letter-spacing: 2px;
     text-transform: uppercase;
 
     color: #8f6752;
+
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+            perspective: 1000px;
+}
+.quiz-alert__text
+{
+    position: relative;
+
+    width: 700px;
+    margin-right: auto; 
+    margin-left: auto;
+}
+.quiz-alert__text:after,
+.quiz-alert__text:before
+{
+    position: absolute;
+    right: 125px;
+
+    display: block;
+
+    width: 452px;
+    height: 26px;
+
+    content: '';
+
+    background-image: url('../images/decor.png');
+}
+.quiz-alert__text:after
+{
+    top: -80px;
+}
+.quiz-alert__text:before
+{
+    bottom: -80px;
 }
 
 .quiz-additional .js-quiz
@@ -279,7 +367,7 @@ button
 .quiz-additional--next
 {
     position: fixed;
-    bottom: 270px; 
+    bottom: 256px; 
 
     width: 100%;
 }
@@ -288,14 +376,42 @@ button
 {
     font-size: 40px;
 
-    max-width: 520px;
-    margin-top: 150px;
     margin-right: auto;
     margin-left: auto;
 
     -webkit-transition: all .3s ease-in;
          -o-transition: all .3s ease-in;
             transition: all .3s ease-in;
+}
+
+.question--1 .description
+{
+    max-width: 520px;
+    margin-top: 150px;
+}
+
+.question--2 .description
+{
+    max-width: 880px;
+    margin-top: 80px;
+}
+
+.question--3 .description
+{
+    width: 500px;
+    margin-top: 240px;
+}
+
+.question--4 .description
+{
+    width: 775px;
+    margin-top: 280px;
+}
+
+.question--5 .description
+{
+    width: 680px;
+    margin-top: 240px;
 }
 
 .footer
@@ -313,7 +429,7 @@ button
             box-sizing: border-box;
     width: 100%;
     padding-right: 45px;
-    padding-bottom: 15px;
+    padding-bottom: 0;
     padding-left: 45px;
 
     -webkit-box-pack: justify;
@@ -326,6 +442,9 @@ button
     font-family: 'Officina', 'Helvetica', Arial, serif;
     font-size: 40px;
     font-weight: 400;
+
+    height: 88px;
+    padding-top: 8px;
 
     text-transform: uppercase; 
 
@@ -371,4 +490,62 @@ button
             transform: translateY(0) scale(1);
 
     opacity: 1;
+}
+
+@-webkit-keyframes shake
+{
+    10%,
+    90%
+    {
+        -webkit-transform: translate3d(-1px, 0, 0);
+                transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80%
+    {
+        -webkit-transform: translate3d(2px, 0, 0);
+                transform: translate3d(2px, 0, 0);
+    }
+    30%,
+    50%,
+    70%
+    {
+        -webkit-transform: translate3d(-4px, 0, 0);
+                transform: translate3d(-4px, 0, 0);
+    }
+    40%,
+    60%
+    {
+        -webkit-transform: translate3d(4px, 0, 0);
+                transform: translate3d(4px, 0, 0);
+    }
+}
+
+@keyframes shake
+{
+    10%,
+    90%
+    {
+        -webkit-transform: translate3d(-1px, 0, 0);
+                transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80%
+    {
+        -webkit-transform: translate3d(2px, 0, 0);
+                transform: translate3d(2px, 0, 0);
+    }
+    30%,
+    50%,
+    70%
+    {
+        -webkit-transform: translate3d(-4px, 0, 0);
+                transform: translate3d(-4px, 0, 0);
+    }
+    40%,
+    60%
+    {
+        -webkit-transform: translate3d(4px, 0, 0);
+                transform: translate3d(4px, 0, 0);
+    }
 }
