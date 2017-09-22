@@ -256,6 +256,7 @@ $(document).on('click', '.js-quiz', function () {
             quiz.append( "<div class='score'>" + quizStrings[0][lang].score + " " + score + " " + quizStrings[0][lang].out + " " + quizQuestionsLength +"</div>" );
             welcome.show();
             $('.animate-js').addClass('animate');
+            $('.background').addClass('background--intro background--animate');
 
             setTimeout(function () {
                 $('.score').remove();
@@ -328,6 +329,7 @@ $(document).on('click', '.reset', function () {
         welcome.show();
         $('.animate-js').addClass('animate');
         $('.background').addClass('background--animate');
+        $('body').removeClass();
     }, 400);
 
     score = 0;
@@ -352,6 +354,8 @@ $(document).on('click', '.lang', function () {
         interfaceRender();
         $('.animate-js').removeClass('animate');
         $('.background').addClass('background--animate');
+        $('body').removeClass();
+
 
         welcome.show();
 
