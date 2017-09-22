@@ -1,3 +1,5 @@
+/* up */
+
 var i = 0,
     score = 0,
     firstClick = true,
