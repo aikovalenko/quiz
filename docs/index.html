@@ -4,27 +4,196 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-      <meta name = "viewport" content = "user-scalable=no, width=device-width">
-      <!--<meta name="viewport" content="width=1920, initial-scale=1, maximum-scale=1.0, user-scalable=no" />-->
+      <!--<meta name = "viewport" content = "user-scalable=no, width=device-width">-->
+      <meta name="viewport" content="width=2048, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
       <title>Смоленская крепость</title>
       <link rel='stylesheet' href='css/libs.css'>
       <link rel='stylesheet' href='css/style.css'>
   </head>
   <body>
     <div class="background background--animate background--intro"></div>
-    <div class="welcome">
 
-    </div>
+    <div class="welcome"></div>
 
     <div class="quiz"></div>
 
-    <div class="footer">
-
-    </div>
-
-
+    <div class="footer"></div>
 
     <script src='js/libs.js'></script>
+    <script>
+        var quizQuestions = [
+            {
+                "ru": {
+                    question: "Тарч",
+                    answers: {
+                        "Польский меч": "0",
+                        "Вид ядра": "0",
+                        "Русский щит": "1"
+                    },
+                    description: "<p>Представлял собой щит с железной рукавицей, надеваемой на левую руку.</p><p>К переднему концу рукавицы прикреплялся узкий клинок типа шпаги.</p><p>Тарч употреблялся лишь при обороне городов и крепостей</p>"
+                },
+                "eng": {
+                    question: "Tarch",
+                    answers: {
+                        "Polish sword": "0",
+                        "Kind of kernel": "0",
+                        "Russian shield": "1"
+                    },
+                    description: "Facts of the first question"
+                }
+            },
+            {
+                "ru": {
+                    question: "Куяк",
+                    answers: {
+                        "Доспехи из пластин": "1",
+                        "Кулак на древнерусском": "0",
+                        "Название<br>птицы": "0"
+                    },
+                    description: "<p>Куяк — доспех из металлических пластин, прямоугольных или круглых, набранных каждая отдельно на кожаную или суконную основу.</p><p>Куяки изготовлялись с рукавами и без рукавов, имели полы, как кафтан. Куяк мог усиливаться на груди и спине большими латными досками — щитами. Такие доспехи бывали на Руси с XIII по XVII век и имели близкие аналоги в Западной Европе. Сам же термин «куяк» появился лишь в XVI веке.</p>"
+                },
+                "eng": {
+                    question: "Second item",
+                    answers: {
+                        "Доспехи из пластин": "1",
+                        "Кулак на древнерусском": "0",
+                        "Название<br>птицы": "0"
+                    },
+                    description: "Facts of the second question"
+                }
+            },
+            {
+                "ru": {
+                    question: "Юшман",
+                    answers: {
+                        "Суп из баранины": "0",
+                        "Вид кольчуги ": "1",
+                        "Турецкая сабля": "0"
+                    },
+                    description: "<p>Юшман представляет собой кольчужную рубашку с вплетённым на груди и спине набором горизонтальных пластин</p>"
+                },
+                "eng": {
+                    question: "Third item",
+                    answers: {
+                        "Суп из баранины": "0",
+                        "Вид кольчуги ": "1",
+                        "Турецкая сабля": "0"
+                    },
+                    description: "Facts of the third question"
+                }
+            },
+            {
+                "ru": {
+                    question: "Чалдар",
+                    answers: {
+                        "Воинское звание": "0",
+                        "Вид колющего оружия": "0",
+                        "Доспехи для коня": "1"
+                    },
+                    description: "<p>Чалдар — конские покровы, набранные из металлических блях, нашитых на сукно, закрывавшие круп, бока и грудь лошади и имевшие защитное назначение</p>"
+                },
+                "eng": {
+                    question: "Third item",
+                    answers: {
+                        "Воинское звание": "0",
+                        "Вид колющего оружия": "0",
+                        "Доспехи для коня": "1"
+                    },
+                    description: "Facts of the third question"
+                }
+            },
+            {
+                "ru": {
+                    question: "Мисюрка",
+                    answers: {
+                        "Вид бокала": "0",
+                        "Уменьшительно-ласкательное имя": "0",
+                        "Вид шлема": "1"
+                    },
+                    description: "<p>Мисюркой — железной шапкой — называлось воинское наголовье, защищавшее лишь верхнюю часть головы воина. </p><p>На Руси мисюрка известна с XIV века</p>"
+                },
+                "eng": {
+                    question: "Third item",
+                    answers: {
+                        "Вид бокала": "0",
+                        "Уменьшительно-ласкательное имя": "0",
+                        "Вид шлема": "1"
+                    },
+                    description: "Facts of the third question"
+                }
+            },
+            {
+                "ru": {
+                    question: "Тегиляй",
+                    answers: {
+                        "Род войск": "0",
+                        "Шапка-ушанка XVII века": "0",
+                        "Военный кафтан": "1"
+                    },
+                    description: "<p>Тегиляй (XVI век) — одежда вроде кафтана с короткими рукавами и с высоким стоячим воротником. </p><p>Подбитый ватою или пенькой и насквозь простёганный, тегиляй обладал достаточными защитными качествами и носился вместо доспехов небогатыми ратниками</p>"
+                },
+                "eng": {
+                    question: "Third item",
+                    answers: {
+                        "Род войск": "0",
+                        "Шапка-ушанка XVII века": "0",
+                        "Военный кафтан": "1"
+                    },
+                    description: "Facts of the third question"
+                }
+            },
+            {
+                "ru": {
+                    question: "Бердыш",
+                    answers: {
+                        "Воинское звание": "0",
+                        "Наконечник шлема": "0",
+                        "Холодное оружие": "1"
+                    },
+                    description: "<p>Бердыш — древковое холодное оружие</p>"
+                },
+                "eng": {
+                    question: "Third item",
+                    answers: {
+                        "Воинское звание": "0",
+                        "Наконечник шлема": "0",
+                        "Холодное оружие": "1"
+                    },
+                    description: "Facts of the third question"
+                }
+            }
+        ];
+
+
+        var quizStrings = [
+            {
+                "ru": {
+                    header: "проверьте свои познания",
+                    about: "в военном обмундировании XVII века",
+                    start: "Начать",
+                    end: "Завершить квест",
+                    score: "Ваш счет",
+                    out: "из",
+                    tryAgain: "неверно, попробуйте ещё раз",
+                    reset: "В начало",
+                    next: "Следующий вопрос",
+                    lang: "English"
+                },
+                "eng": {
+                    header: "test your knowledge",
+                    about: "of the military outfit of the XVII century",
+                    start: "Start",
+                    end: "Finish",
+                    score: "Your score is",
+                    out: "out of",
+                    tryAgain: "wrong, try again",
+                    reset: "To the beginning",
+                    next: "Next question",
+                    lang: "Русский"
+                }
+            }
+        ];
+    </script>
     <script src='js/scripts.js'></script>
   </body>
 </html>
