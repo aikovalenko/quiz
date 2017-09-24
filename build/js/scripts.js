@@ -1,3 +1,5 @@
+/* up 2 */
+
 var i = 0,
     score = 0,
     firstClick = true,
@@ -6,178 +8,9 @@ var i = 0,
     footer = $('.footer'),
     lang = $('html').attr('lang');
 
-var quizQuestions = [
-    {
-        "ru": {
-            question: "Тарч",
-            answers: {
-                "Польский меч": "0",
-                "Вид ядра": "0",
-                "Русский щит": "1"
-            },
-            description: "<p>Представлял собой щит с железной рукавицей, надеваемой на левую руку.</p><p>К переднему концу рукавицы прикреплялся узкий клинок типа шпаги.</p><p>Тарч употреблялся лишь при обороне городов и крепостей</p>"
-        },
-        "eng": {
-            question: "Tarch",
-            answers: {
-                "Polish sword": "0",
-                "Kind of kernel": "0",
-                "Russian shield": "1"
-            },
-            description: "Facts of the first question"
-        }
-    },
-    {
-        "ru": {
-            question: "Куяк",
-            answers: {
-                "Доспехи из пластин ": "1",
-                "Кулак на древнерусском": "0",
-                "Название<br>птицы": "0"
-            },
-            description: "<p>Куяк — доспех из металлических пластин, прямоугольных или круглых, набранных каждая отдельно на кожаную или суконную основу.</p><p>Куяки изготовлялись с рукавами и без рукавов, имели полы, как кафтан. Куяк мог усиливатьсяна груди и спине большими латными досками — щитами. Такие доспехи бывали на Руси с XIII по XVII век и имели близкие аналоги в Западной Европе. Сам же термин «куяк» появился лишь в XVI веке.</p>"
-        },
-        "eng": {
-            question: "Second item",
-            answers: {
-                "Also false": "0",
-                "False": "0",
-                "True": "1"
-            },
-            description: "Facts of the second question"
-        }
-    },
-    {
-        "ru": {
-            question: "Юшман",
-            answers: {
-                "Суп из баранины": "0",
-                "Вид кольчуги ": "1",
-                "Турецкая сабля": "0"
-            },
-            description: "<p>Юшман представляет собой кольчужную рубашку с вплетённым на груди и спине набором горизонтальных пластин</p>"
-        },
-        "eng": {
-            question: "Third item",
-            answers: {
-                "Also false": "0",
-                "False": "0",
-                "True": "1"
-            },
-            description: "Facts of the third question"
-        }
-    },
-    {
-        "ru": {
-            question: "Чалдар",
-            answers: {
-                "Воинское звание": "0",
-                "Вид колющего оружия": "0",
-                "Доспехи для коня": "1"
-            },
-            description: "<p>Чалдар — конские покровы, набранные из металлических блях, нашитых на сукно, закрывавшие круп, бока и грудь лошади и имевшие защитное назначение</p>"
-        },
-        "eng": {
-            question: "Third item",
-            answers: {
-                "Also false": "0",
-                "False": "0",
-                "True": "1"
-            },
-            description: "Facts of the third question"
-        }
-    },
-    {
-        "ru": {
-            question: "Мисюрка",
-            answers: {
-                "Вид бокала": "0",
-                "Уменьшительно-ласкательное имя": "0",
-                "Вид шлема": "1"
-            },
-            description: "<p>Мисюркой — железной шапкой — называлось воинское наголовье, защищавшее лишь верхнюю часть головы воина. </p><p>На Руси мисюрка известна с XIV века</p>"
-        },
-        "eng": {
-            question: "Third item",
-            answers: {
-                "Also false": "0",
-                "False": "0",
-                "True": "1"
-            },
-            description: "Facts of the third question"
-        }
-    },
-    {
-        "ru": {
-            question: "Тегиляй",
-            answers: {
-                "Род войск": "0",
-                "Шапка-ушанка XVII века": "0",
-                "Военный кафтан": "1"
-            },
-            description: "<p>На Руси мисюрка известна с XIV века</p>"
-        },
-        "eng": {
-            question: "Third item",
-            answers: {
-                "Also false": "0",
-                "False": "0",
-                "True": "1"
-            },
-            description: "Facts of the third question"
-        }
-    },
-    {
-        "ru": {
-            question: "Бердыш",
-            answers: {
-                "Воинское звание": "0",
-                "Наконечник шлема": "0",
-                "Холодное оружие": "1"
-            },
-            description: "<p>На Руси мисюрка известна с XIV века</p>"
-        },
-        "eng": {
-            question: "Third item",
-            answers: {
-                "Also false": "0",
-                "False": "0",
-                "True": "1"
-            },
-            description: "Facts of the third question"
-        }
-    }
-];
 var quizQuestionsLength = quizQuestions.length;
 
-var quizStrings = [
-    {
-        "ru": {
-            header: "проверьте свои познания",
-            about: "в военном обмундировании XVII века",
-            start: "Начать",
-            end: "Завершить квест",
-            score: "Ваш счет",
-            out: "из",
-            tryAgain: "неверно, попробуйте ещё раз",
-            reset: "В начало",
-            next: "Следующий вопрос",
-            lang: "English"
-        },
-        "eng": {
-            header: "test your knowledge",
-            about: "of the military outfit of the XVII century",
-            start: "Start",
-            end: "Finish",
-            score: "Your score is",
-            out: "out of",
-            tryAgain: "wrong, try again",
-            reset: "To the beginning",
-            next: "Next question",
-            lang: "Русский"
-        }
-    }
-];
+
 
 function interfaceRender() {
     welcome.append(
@@ -256,6 +89,7 @@ $(document).on('click', '.js-quiz', function () {
             quiz.append( "<div class='score'>" + quizStrings[0][lang].score + " " + score + " " + quizStrings[0][lang].out + " " + quizQuestionsLength +"</div>" );
             welcome.show();
             $('.animate-js').addClass('animate');
+            $('.background').addClass('background--intro background--animate');
 
             setTimeout(function () {
                 $('.score').remove();
@@ -328,6 +162,7 @@ $(document).on('click', '.reset', function () {
         welcome.show();
         $('.animate-js').addClass('animate');
         $('.background').addClass('background--animate');
+        $('body').removeClass();
     }, 400);
 
     score = 0;
@@ -352,6 +187,8 @@ $(document).on('click', '.lang', function () {
         interfaceRender();
         $('.animate-js').removeClass('animate');
         $('.background').addClass('background--animate');
+        $('body').removeClass();
+
 
         welcome.show();
 
