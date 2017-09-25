@@ -63,10 +63,19 @@
     src: url('../fonts/OfficinaSerifBoldOSC.eot?#iefix') format('embedded-opentype'), url('../fonts/OfficinaSerifBoldOSC.woff') format('woff'), url('../fonts/OfficinaSerifBoldOSC.woff2') format('woff2'), url('../fonts/OfficinaSerifBoldOSC.ttf') format('truetype'), url('../fonts/OfficinaSerifBoldOSC.svg#Officina') format('svg');
 }
 
+body,
+html
+{
+    position: fixed;
+
+    width: 100%;
+    height: 100%;
+}
+
 body
 {
     font-family: 'Officina', 'Helvetica', Arial, serif;
-    font-size: 70px;
+    font-size: 35px;
     font-weight: 400;
 
     overflow: hidden;
@@ -76,8 +85,18 @@ body
         -ms-user-select: none;
             user-select: none;
 
-    color: #000; 
-    background-image: url('../images/background.jpg');
+    color: #000;
+}
+
+.background-fix
+{
+    position: absolute;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-image: url('../images/background.jpg'); 
     -webkit-background-size: cover;
             background-size: cover;
 }
@@ -184,15 +203,15 @@ button
 
 .welcome
 {
-    margin-top: 650px;
+    margin-top: 325px;
 
     text-align: center;
 }
 .welcome .js-quiz
 {
-    font-size: 76px;
+    font-size: 38px;
 
-    margin-top: 206px;
+    margin-top: 99px;
 
     color: #af2626;
 }
@@ -216,7 +235,7 @@ button
 
 .header
 {
-    font-size: 76px;
+    font-size: 38px;
     font-weight: 500; 
 
     margin-bottom: 10px;
@@ -224,16 +243,16 @@ button
     -webkit-transition: all .3s ease-in;
          -o-transition: all .3s ease-in;
             transition: all .3s ease-in;
-    letter-spacing: 8px;
+    letter-spacing: 4px;
     text-transform: uppercase;
 }
 .header--under
 {
-    font-size: 74px;
+    font-size: 37px;
     font-weight: 500;
-    line-height: 88px;
+    line-height: 44px;
 
-    max-width: 1000px;
+    max-width: 500px;
     margin-right: auto;
     margin-left: auto;
 
@@ -244,14 +263,15 @@ button
 
 .question
 {
-    font-size: 160px;
+    font-size: 80px;
+    font-weight: 500;
 
-    margin-top: 140px;
+    margin-top: 70px;
 
     -webkit-transition: all .3s ease-in;
          -o-transition: all .3s ease-in;
             transition: all .3s ease-in; 
-    letter-spacing: 8px;
+    letter-spacing: 4px;
     text-transform: uppercase;
 }
 
@@ -267,9 +287,9 @@ button
     display: -ms-flexbox;
     display:         flex;
 
-    margin-top: 380px;
-    padding-right: 60px;
-    padding-left: 60px; 
+    margin-top: 190px;
+    padding-right: 30px;
+    padding-left: 30px; 
 
     -webkit-justify-content: space-around;
     -ms-flex-pack: distribute;
@@ -279,7 +299,7 @@ button
 .quiz-answer
 {
     font-family: 'Officina', 'Helvetica', Arial, serif;
-    font-size: 76px;
+    font-size: 38px;
     font-weight: 500;
 
     position: relative;
@@ -305,11 +325,11 @@ button
 
 .quiz-alert
 {
-    font-size: 42px;
+    font-size: 21px;
     font-weight: 500;
 
     position: fixed;
-    bottom: 270px;
+    bottom: 135px;
 
     width: 100%;
 
@@ -331,7 +351,7 @@ button
 {
     position: relative;
 
-    width: 700px;
+    width: 375px;
     margin-right: auto; 
     margin-left: auto;
 }
@@ -339,29 +359,31 @@ button
 .quiz-alert__text:before
 {
     position: absolute;
-    right: 125px;
+    right: 62px;
 
     display: block;
 
-    width: 452px;
-    height: 26px;
+    width: 256px;
+    height: 13px;
 
     content: '';
 
     background-image: url('../images/decor.png');
+    -webkit-background-size: cover;
+            background-size: cover;
 }
 .quiz-alert__text:after
 {
-    top: -94px;
+    top: -46px;
 }
 .quiz-alert__text:before
 {
-    bottom: -80px;
+    bottom: -40px;
 }
 
 .quiz-additional .js-quiz
 {
-    font-size: 42px;
+    font-size: 21px;
 
     color: #af2626;
 }
@@ -369,14 +391,14 @@ button
 .quiz-additional--next
 {
     position: fixed;
-    bottom: 265px; 
+    bottom: 134px; 
 
     width: 100%;
 }
 
 .description
 {
-    font-size: 40px;
+    font-size: 20px;
 
     margin-right: auto;
     margin-left: auto;
@@ -388,44 +410,44 @@ button
 
 .question--1 .description
 {
-    max-width: 520px;
-    margin-top: 150px;
+    max-width: 235px;
+    margin-top: 75px;
 }
 
 .question--2 .description
 {
-    max-width: 880px;
-    margin-top: 80px;
+    max-width: 440px;
+    margin-top: 40px;
 }
 
 .question--3 .description
 {
-    width: 500px;
-    margin-top: 240px;
+    width: 250px;
+    margin-top: 120px;
 }
 
 .question--4 .description
 {
-    width: 775px;
-    margin-top: 280px;
+    width: 387px;
+    margin-top: 140px;
 }
 
 .question--5 .description
 {
-    width: 680px;
-    margin-top: 240px;
+    width: 340px;
+    margin-top: 120px;
 }
 
 .question--6 .description
 {
-    width: 700px;
-    margin-top: 140px;
+    width: 350px;
+    margin-top: 70px;
 }
 
 .question--7 .description
 {
-    width: 380px;
-    margin-top: 220px;
+    width: 190px;
+    margin-top: 110px;
 }
 
 .footer
@@ -442,9 +464,9 @@ button
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     width: 100%;
-    padding-right: 45px;
+    padding-right: 22px;
     padding-bottom: 0;
-    padding-left: 45px;
+    padding-left: 22px;
 
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;
@@ -454,11 +476,11 @@ button
 .footer button
 {
     font-family: 'Officina', 'Helvetica', Arial, serif;
-    font-size: 40px;
+    font-size: 20px;
     font-weight: 400;
 
-    height: 88px;
-    padding-top: 8px;
+    height: 44px;
+    padding-top: 4px;
 
     text-transform: uppercase; 
 
@@ -467,8 +489,8 @@ button
 
 .score
 {
-    font-size: 60px;
-    line-height: 77px; 
+    font-size: 30px;
+    line-height: 41px; 
 
     position: absolute;
     bottom: 0;
